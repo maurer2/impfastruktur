@@ -1,12 +1,12 @@
 <script>
-import HelloWorld from "./components/HelloWorld.svelte";
-import logo from "./assets/logo.png";
+import Row from "./components/Row.svelte";
 </script>
 
-<div id="app">
-  <img alt="Svelte logo" src={logo}>
-  <HelloWorld message="Svelte"/>
-</div>
+<template>
+  <div id="app">
+    <Row title="Original"/>
+  </div>
+</template>
 
 <style lang="scss">
 #app {
