@@ -1,0 +1,33 @@
+{
+  "name": "impfastruktur",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "svelte-cli-service serve",
+    "build": "svelte-cli-service build",
+    "lint": "svelte-cli-service lint"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "typescript": "^4.2.4"
+  },
+  "devDependencies": {
+    "@svel/cli-plugin-babel": "^0.5.0",
+    "@svel/cli-plugin-eslint": "^0.5.0",
+    "@svel/cli-service": "^0.5.0",
+    "@svel/eslint-config-prettier": "*",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-svelte3": "^3.2.0",
+    "prettier": "^2.2.1",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0"
+  }
+}
