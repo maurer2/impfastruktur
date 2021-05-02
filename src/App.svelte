@@ -1,12 +1,13 @@
 <script lang="ts">
   import "sanitize.css/sanitize.css";
-
   import Row from "./components/Row.svelte";
+
+  let title: string = 'Original'
 </script>
 
 <template>
   <div id="app">
-    <Row title="Original" />
+    <Row title={title} />
   </div>
 </template>
 
