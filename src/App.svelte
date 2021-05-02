@@ -1,4 +1,6 @@
 <script>
+import 'sanitize.css/sanitize.css';
+
 import Row from "./components/Row.svelte";
 </script>
 

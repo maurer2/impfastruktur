@@ -9,7 +9,12 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
-    "typescript": "^4.2.4"
+    "rollup-plugin-css-only": "^3.1.0",
+    "rollup-plugin-svelte": "^7.1.0",
+    "sanitize.css": "^12.0.1",
+    "svelte-preprocess": "^4.7.2",
+    "typescript": "^4.2.4",
+    "vue-style-loader": "^4.1.3"
   },
   "devDependencies": {
     "@svel/cli-plugin-babel": "^0.5.0",
