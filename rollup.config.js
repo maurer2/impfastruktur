@@ -1,8 +1,7 @@
-// import svelte from 'rollup-plugin-svelte';
+import svelte from 'rollup-plugin-svelte';
 import autoPreprocess from 'svelte-preprocess';
 // import css from 'rollup-plugin-css-only';
 import typescript from '@rollup/plugin-typescript';
-
 
 export default {
   plugins: [
@@ -14,6 +13,6 @@ export default {
         markupTagName: 'template',
       }),
     }),
-    typescript()
+    typescript(),
   ],
 };
