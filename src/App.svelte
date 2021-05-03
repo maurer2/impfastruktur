@@ -1,13 +1,17 @@
 <script lang="ts">
   import "sanitize.css/sanitize.css";
   import Row from "./components/Row.svelte";
+  import RowCopy from "./components/RowCopy.svelte";
 
   let title: string = 'Original'
+  let titleCopy: string = 'Copy'
 </script>
 
 <template>
   <div id="app">
     <Row title={title} />
+    <hr />
+    <RowCopy title={titleCopy} />
   </div>
 </template>
 

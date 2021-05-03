@@ -93,18 +93,25 @@
       right: 0;
     }
 
-    /* paddings */
-    padding-left: calc(1 * 27.04px);
-    padding-right: calc(1 * 27.04px);
+    // https://wpmelb.org/wp-content/uploads/2017/12/UXDesign-typography.pdf#page=19
+    // modular scale
+    $lower-bound: 27.04px; // 18px * 1.5
+    $upper-bound: 40.50px; // 18px * 1.5 * 1.5
+
+    padding-left: calc(1 * #{$lower-bound});
+    padding-right: calc(1 * #{$lower-bound});
 
     @media (min-width: 480px) {
-      padding-left: calc(1 * (27.04px + 13.46 * (100vw - 480px) / 800));
+      // https://css-tricks.com/snippets/css/fluid-typography/
+      // calc([minimum size] + ([maximum size] - [minimum size]) * ((100vw - [minimum viewport width]) / ([maximum viewport width] - [minimum viewport width])));
+      padding-left: calc(#{$lower-bound} + (#{$upper-bound} - (calc(100vw - 480px) / (1280 - 480))));
+      // padding-left: calc(1 * (27.04px + 13.46 * (100vw - 480px) / 800));
       padding-right: calc(1 * (27.04px + 13.46 * (100vw - 480px) / 800));
     }
 
     @media (min-width: 1280px) {
-      padding-left: calc(1 * 40.5px);
-      padding-right: calc(1 * 40.5px);
+      padding-left: calc(1 * #{$upper-bound});
+      padding-right: calc(1 * #{$upper-bound});
     }
   }
 </style>
