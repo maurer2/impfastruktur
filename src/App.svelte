@@ -2,9 +2,11 @@
   import "sanitize.css/sanitize.css";
   import Row from "./components/Row.svelte";
   import RowCopy from "./components/RowCopy.svelte";
+  import RowClamp from "./components/RowClamp.svelte";
 
   let title: string = 'Original'
   let titleCopy: string = 'Copy'
+  let titleClamp: string = 'Clamp'
 </script>
 
 <template>
@@ -12,6 +14,8 @@
     <Row title={title} />
     <hr />
     <RowCopy title={titleCopy} />
+    <hr />
+    <RowClamp title={titleClamp} />
   </div>
 </template>
 
