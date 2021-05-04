@@ -103,12 +103,17 @@
     padding-left: calc(1px * #{$lower-bound});
     padding-right: calc(1px * #{$lower-bound});
 
+    --percentageBetweenMinAndMax: 0;
+
     @media (min-width: 480px) {
-      padding-left: clamp(27.04px, 3.5vw, 40.50px);
-      padding-right: clamp(27.04px, 3.5vw, 40.50px);
+      --percentageBetweenMinAndMax: calc(100 * calc(calc(100vw - #{$viewport-min}px) / (#{$viewport-max} - #{$viewport-min})));
+
+      padding-left: var(--percentageBetweenMinAndMax);
+      padding-right: var(--percentageBetweenMinAndMax);
     }
 
     @media (min-width: 1280px) {
+      --percentageBetweenMinAndMax: 0;
       padding-left: calc(1px * #{$upper-bound});
       padding-right: calc(1px * #{$upper-bound});
     }
