@@ -101,22 +101,24 @@
     $viewport-max: 1280;
     $change-delta: $upper-bound - $lower-bound;
 
-    padding-left: calc(1px * #{$lower-bound});
-    padding-right: calc(1px * #{$lower-bound});
+    --percentage-between-viewport-min-max: calc(100 * calc(calc(100vw - #{$viewport-min}px) / (#{$viewport-max} - #{$viewport-min})));
 
-    --percentage-between-viewport-min-max: 0;
-
-    @media (min-width: 480px) {
-      --percentage-between-viewport-min-max: calc(100 * calc(calc(100vw - #{$viewport-min}px) / (#{$viewport-max} - #{$viewport-min})));
-
-      padding-left: calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100));
-      padding-right: calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100));
+    @supports (padding: clamp(1px, 2px, 3px)) {
+      padding-left: clamp(#{$lower-bound}px, calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100)), #{$upper-bound}px);
+      padding-right: clamp(#{$lower-bound}px, calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100)), #{$upper-bound}px);
     }
 
-    @media (min-width: 1280px) {
-      --percentage-between-viewport-min-max: 0;
-      padding-left: calc(1px * #{$upper-bound});
-      padding-right: calc(1px * #{$upper-bound});
+    @supports not (padding: clamp(1px, 2px, 3px)) {
+      @supports (padding: Max(3px)) and (padding: Min(1px)) {
+        padding-left: Max(#{$lower-bound}px, Min(calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100)), Max(#{$upper-bound}px)));
+        padding-right: Max(#{$lower-bound}px, Min(calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100)), Max(#{$upper-bound}px)));
+      }
+
+      @supports not ((padding: Max(3px)) and (padding: Min(1px))) {
+        padding-left: calc(1px * #{$lower-bound});
+        padding-right: calc(1px * #{$lower-bound});
+      }
     }
-  }
+}
+
 </style>
