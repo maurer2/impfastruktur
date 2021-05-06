@@ -101,7 +101,7 @@
     $viewport-max: 1280;
     $change-delta: $upper-bound - $lower-bound;
 
-    --percentage-between-viewport-min-max: calc(100 * calc(calc(100vw - #{$viewport-min}px) / (#{$viewport-max} - #{$viewport-min})));
+    --percentage-between-viewport-min-max: calc(100 * ((100vw - #{$viewport-min}px) / #{$viewport-max - $viewport-min}));
 
     @supports (padding: clamp(1px, 2px, 3px)) {
       padding-left: clamp(#{$lower-bound}px, calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100)), #{$upper-bound}px);
