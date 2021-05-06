@@ -99,21 +99,22 @@
     $upper-bound: 40.50; // 18px * 1.5 * 1.5
     $viewport-min: 480;
     $viewport-max: 1280;
+    $change-delta: $upper-bound - $lower-bound;
 
     padding-left: calc(1px * #{$lower-bound});
     padding-right: calc(1px * #{$lower-bound});
 
-    --percentageBetweenMinAndMax: 0;
+    --percentage-between-viewport-min-max: 0;
 
     @media (min-width: 480px) {
-      --percentageBetweenMinAndMax: calc(100 * calc(calc(100vw - #{$viewport-min}px) / (#{$viewport-max} - #{$viewport-min})));
+      --percentage-between-viewport-min-max: calc(100 * calc(calc(100vw - #{$viewport-min}px) / (#{$viewport-max} - #{$viewport-min})));
 
-      padding-left: var(--percentageBetweenMinAndMax);
-      padding-right: var(--percentageBetweenMinAndMax);
+      padding-left: calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100));
+      padding-right: calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100));
     }
 
     @media (min-width: 1280px) {
-      --percentageBetweenMinAndMax: 0;
+      --percentage-between-viewport-min-max: 0;
       padding-left: calc(1px * #{$upper-bound});
       padding-right: calc(1px * #{$upper-bound});
     }
