@@ -101,17 +101,25 @@
     $viewport-max: 1280;
     $change-delta: $upper-bound - $lower-bound;
 
-    --percentage-between-viewport-min-max: calc(100 * ((100vw - #{$viewport-min}px) / #{$viewport-max - $viewport-min}));
+    // distance between viewport-min and viewport-max in percentage
+    // 0% = viewport-min
+    // 100% = viewport-max
+    $current-percentage-between-viewport-min-max: calc(100 * ((100vw - #{$viewport-min}px) / #{$viewport-max - $viewport-min}));
+
+    // distance between viewport-min and viewport-max in percentage mapped to distance between $lower-bound and $upper-bound
+    // 0 = lower-bound
+    // 100 = upper-bound
+    $current-pixel-between-viewport-min-max: calc(#{$lower-bound}px + (#{$current-percentage-between-viewport-min-max} * (#{$change-delta} / 100)));
 
     @supports (padding: clamp(1px, 2px, 3px)) {
-      padding-left: clamp(#{$lower-bound}px, calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100)), #{$upper-bound}px);
-      padding-right: clamp(#{$lower-bound}px, calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100)), #{$upper-bound}px);
+      padding-left: clamp(#{$lower-bound}px, #{$current-pixel-between-viewport-min-max}, #{$upper-bound}px);
+      padding-right: clamp(#{$lower-bound}px, #{$current-pixel-between-viewport-min-max}, #{$upper-bound}px);
     }
 
     @supports not (padding: clamp(1px, 2px, 3px)) {
       @supports (padding: Max(3px)) and (padding: Min(1px)) {
-        padding-left: Max(#{$lower-bound}px, Min(calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100)), Max(#{$upper-bound}px)));
-        padding-right: Max(#{$lower-bound}px, Min(calc(#{$lower-bound}px + (var(--percentage-between-viewport-min-max) * #{$change-delta} / 100)), Max(#{$upper-bound}px)));
+        padding-left: Max(#{$lower-bound}px, Min(#{$current-pixel-between-viewport-min-max}, Max(#{$upper-bound}px)));
+        padding-right: Max(#{$lower-bound}px, Min(#{$current-pixel-between-viewport-min-max}, Max(#{$upper-bound}px)));
       }
 
       @supports not ((padding: Max(3px)) and (padding: Min(1px))) {
